@@ -452,6 +452,16 @@ async function submitRSVP(){
 
     });
 
+    if (
+    attendance === "Accept" &&
+    selectedGuests.length === 0
+){
+    alert(
+    "Please select at least one guest who will attend."
+    );
+    return;
+}
+
     try{
 
 await fetch(
