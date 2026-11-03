@@ -426,7 +426,7 @@ if(data){
 
 }
 
-function submitRSVP(){
+async function submitRSVP(){
 
     const attendance =
     document.getElementById("attendance").value;
@@ -452,14 +452,40 @@ function submitRSVP(){
 
     });
 
-    alert(
-`Thank you for your RSVP!
+    try{
+
+        await fetch(
+        "https://script.google.com/macros/s/AKfycbwgG4seCoh9iaFLsyH_WD7wU6TqzUtCySuLloLETAg-u6a82SpXE7NNGSOIlV5W_gw6/exec",
+        {
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify({
+                guest: guestName,
+                attendance: attendance,
+                attendees: selectedGuests
+            })
+        });
+
+        alert(
+`🎉 Thank you for your RSVP!
 
 Response: ${attendance}
 
 Guests Attending:
-${selectedGuests.join(", ")}`
-    );
+${selectedGuests.join(", ") || "None"}`
+        );
+
+    }catch(error){
+
+        alert(
+        "Unable to submit RSVP. Please try again."
+        );
+
+        console.error(error);
+
+    }
 
 }
 
