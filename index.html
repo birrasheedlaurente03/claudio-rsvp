@@ -26,8 +26,20 @@ body{
 
 .dino{
     text-align:center;
-    font-size:55px;
-    margin-bottom:10px;
+    margin-bottom:15px;
+}
+
+.dino img{
+    width:140px;
+    height:auto;
+    display:block;
+    margin:auto;
+    filter:drop-shadow(0 6px 12px rgba(0,0,0,.15));
+    transition:.3s ease;
+}
+
+.dino img:hover{
+    transform:scale(1.05);
 }
 
 h1{
@@ -117,6 +129,7 @@ button{
     letter-spacing:3px;
     cursor:pointer;
     font-family:Georgia, serif;
+    font-weight:bold;
     transition:.25s;
 }
 
@@ -145,7 +158,9 @@ button:disabled{
 
 <div class="container">
 
-<div class="dino">🦖</div>
+<div class="dino">
+    <img src="birthday.png" alt="Claudio Birthday Dinosaur">
+</div>
 
 <h1>
 Claudio's<br>
@@ -157,11 +172,11 @@ RSVP
 </div>
 
 <p class="subtitle">
-The favour of your reply is requested
+Kindly RSVP below
 </p>
 
 <div class="note">
-Every seat is reserved with love and intention.
+Your presence is the greatest gift.
 <br><br>
 Kindly confirm your attendance below.
 </div>
@@ -175,7 +190,7 @@ Kindly confirm your attendance below.
 <input
 id="guestName"
 type="text"
-placeholder="Type your first name">
+placeholder="Enter your first name">
 
 </div>
 
@@ -184,7 +199,7 @@ SEARCH
 </button>
 
 <p class="search-note">
-Search using the name printed on your invitation.
+Please enter the name shown on your invitation.
 </p>
 
 </div>
