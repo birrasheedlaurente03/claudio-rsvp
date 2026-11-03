@@ -131,6 +131,164 @@ CONFIRM ATTENDANCE
 
 const guests = {
 
+"allan":{
+companions:["Allan Sanchez"]
+},
+
+"allen":{
+companions:["Allen Sanchez"]
+},
+
+"analiza":{
+companions:["Analiza Sanchez"]
+},
+
+"ariel":{
+companions:[
+"Ariel Llosis",
+"Jun-jun Llosis",
+"Patricia Llosis",
+"Rolie Llosis",
+"Jadred Llosis",
+"Anthony Llosis",
+"Lola Glenda Manforte",
+"Lolo Sixto Llosis"
+]
+},
+
+"kharlsen":{
+companions:[
+"Kharlsen Hadjulani",
+"Ninang Nursida Hadjulanin",
+"Ninong Ama"
+]
+},
+
+"alyssa":{
+companions:[
+"Alyssa Sanchez-Hadjulani"
+]
+},
+
+"shane":{
+companions:[
+"Natalie Shane Sanchez",
+"Tita Natie Cahilig",
+"Vandam Villanueva",
+"Eli Villanueva"
+]
+},
+
+"charles":{
+companions:[
+"Charles Aguirre",
+"Julia Aguirre",
+"Gabe Aguirre",
+"Tita Analyn Belda"
+]
+},
+
+"ingrid":{
+companions:[
+"Ingrid Dabu",
+"Lexus Dabu",
+"Bryce Dabu",
+"Ate Mary Ann Laurente",
+"Isaiah Urbina",
+"Miel Urbina"
+]
+},
+
+"michael":{
+companions:[
+"Kuya Michael Laurente",
+"Ate Vhie Laurente",
+"Miles Laurente"
+]
+},
+
+"domingo":{
+companions:[
+"Papa Domingo Laurente"
+]
+},
+
+"fatima":{
+companions:[
+"Mama Fatima Uddin"
+]
+},
+
+"alshamieh":{
+companions:[
+"Kuya Alshamieh Laurente",
+"Marjorie Maturan-Laurente",
+"Kiefer Laurente",
+"Kai Laurente",
+"Kali Laurente"
+]
+},
+
+"khalid":{
+companions:[
+"Khalid Laurente",
+"Leslie Samiado-Laurente",
+"Iyah Laurente",
+"Shaniah Laurente"
+]
+},
+
+"shalimar":{
+companions:[
+"Shalimar Laurente",
+"April Grace"
+]
+},
+
+"rica":{
+companions:[
+"Rica Trinidad"
+]
+},
+
+"namae":{
+companions:[
+"Namae Sanchez"
+]
+},
+
+"charlene":{
+companions:[
+"Charlene Aledo"
+]
+},
+
+"jhagie":{
+companions:[
+"Jhagie Sanchez",
+"Amber Perigrino",
+"Louvelle Sanchez",
+"Joseph Mark Cura",
+"John Mark Cura"
+]
+},
+
+"mika":{
+companions:[
+"Mika Sanchez",
+"Liza Realda",
+"Vence Andrew Sanchez"
+]
+},
+
+"jafet":{
+companions:[
+"Jafet Mark Cura",
+"Princess Cura",
+"Lily Cura"
+]
+},
+
 "marco":{
 companions:[
 "Marco Ayrton Medinacelli",
@@ -143,6 +301,34 @@ companions:[
 "Gian Carlo Bonto",
 "Austine Timkang",
 "Jacob Bonto"
+]
+},
+
+"bernard":{
+companions:[
+"Bernard Ignacio",
+"Ivy Faith Barcelona"
+]
+},
+
+"gabriel":{
+companions:[
+"Gabriel Joseph Mendoza",
+"Jenny Gabrador",
+"Daphne Mendoza",
+"Madi Mendoza"
+]
+},
+
+"ranier":{
+companions:[
+"Ranier Manalo"
+]
+},
+
+"carlo":{
+companions:[
+"Carlo Caligagan"
 ]
 }
 
@@ -178,15 +364,14 @@ if(!data){
             const words =
             fullName.split(/\s+/);
 
-            return (
+            const firstName =
+words[0];
 
-                fullName === guestName ||
+return (
 
-                fullName.includes(guestName) ||
+    firstName === guestName
 
-                words.includes(guestName)
-
-            );
+);
 
         });
 
