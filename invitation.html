@@ -26,28 +26,50 @@ body{
 h1{
     text-align:center;
     color:#1657a8;
+    margin-bottom:5px;
 }
 
 .reserved{
     text-align:center;
     font-size:80px;
     color:#1657a8;
+    font-weight:bold;
 }
 
 .subtitle{
     text-align:center;
     color:#7d8aa5;
+    margin-bottom:20px;
 }
 
 .guest{
     margin:10px 0;
-    font-size:20px;
+    font-size:18px;
+    padding:10px;
+    background:#f5f9ff;
+    border-radius:10px;
+}
+
+select{
+    width:100%;
+    padding:15px;
+    border-radius:12px;
+    border:1px solid #cfdcec;
+    font-size:16px;
+}
+
+.checkbox{
+    margin-top:15px;
 }
 
 .checkbox label{
     display:block;
-    padding:10px;
+    padding:12px;
     margin-bottom:10px;
+    border:1px solid #d9e5f2;
+    border-radius:12px;
+    cursor:pointer;
+    background:white;
 }
 
 button{
@@ -59,6 +81,11 @@ button{
     border-radius:15px;
     font-size:20px;
     cursor:pointer;
+    margin-top:20px;
+}
+
+button:hover{
+    background:#1256a0;
 }
 
 </style>
@@ -70,17 +97,21 @@ button{
 
 <h1>🦖 Claudio's RSVP</h1>
 
-<p class="subtitle">RESERVED IN YOUR HONOR</p>
+<p class="subtitle">
+Reserved In Your Honor
+</p>
 
 <div id="reservedCount" class="reserved"></div>
 
-<p class="subtitle">GUESTS INCLUDED IN THE INVITATION</p>
+<p class="subtitle">
+Guests Included In The Invitation
+</p>
 
 <div id="guestList"></div>
 
 <h3>Attendance</h3>
 
-<select id="attendance" style="width:100%;padding:15px;">
+<select id="attendance">
 <option value="">Select your response</option>
 <option value="Accept">Joyfully Accepts</option>
 <option value="Decline">Regretfully Declines</option>
@@ -124,84 +155,127 @@ const guestName =
 .trim()
 .toLowerCase();
 
-let data = guests[guestName];
+let data = null;
 
+/* direct search */
+if(guests[guestName]){
+    data = guests[guestName];
+}
+
+/* search all companion names */
 if(!data){
 
-for(const key in guests){
+    for(const key in guests){
 
-const invitation = guests[key];
+        const invitation = guests[key];
 
-const found = invitation.companions.some(person => {
+        const found =
+        invitation.companions.some(person => {
 
-const fullName =
-person.toLowerCase();
+            const fullName =
+            person.toLowerCase().trim();
 
-const words =
-fullName.split(" ");
+            const words =
+            fullName.split(/\s+/);
 
-return (
-fullName.includes(guestName) ||
-words.includes(guestName)
-);
+            return (
 
-});
+                fullName === guestName ||
 
-if(found){
-data = invitation;
-break;
-}
+                fullName.includes(guestName) ||
 
-}
+                words.includes(guestName)
+
+            );
+
+        });
+
+        if(found){
+            data = invitation;
+            break;
+        }
+
+    }
 
 }
 
 if(data){
 
-document.getElementById("reservedCount").innerHTML =
-data.companions.length;
+    document.getElementById("reservedCount").innerHTML =
+    data.companions.length;
 
-let guestHtml = "";
+    let guestHtml = "";
 
-data.companions.forEach((person,index)=>{
+    data.companions.forEach((person,index)=>{
 
-guestHtml += `
-<div class="guest">
-${index+1}. ${person}
-</div>
-`;
+        guestHtml += `
+        <div class="guest">
+        ${index + 1}. ${person}
+        </div>
+        `;
 
-});
+    });
 
-document.getElementById("guestList").innerHTML =
-guestHtml;
+    document.getElementById("guestList").innerHTML =
+    guestHtml;
 
-let checkboxes = "";
+    let checkboxes = "";
 
-data.companions.forEach(person=>{
+    data.companions.forEach(person=>{
 
-checkboxes += `
-<label>
-<input type="checkbox" value="${person}">
- ${person}
-</label>
-`;
+        checkboxes += `
+        <label>
+            <input type="checkbox" value="${person}">
+            ${person}
+        </label>
+        `;
 
-});
+    });
 
-document.getElementById("checkboxes").innerHTML =
-checkboxes;
+    document.getElementById("checkboxes").innerHTML =
+    checkboxes;
 
 }else{
 
-alert("Invitation not found");
-window.location.href="index.html";
+    alert("Invitation not found.");
+    window.location.href="index.html";
 
 }
 
 function submitRSVP(){
 
-alert("RSVP Submitted");
+    const attendance =
+    document.getElementById("attendance").value;
+
+    if(!attendance){
+
+        alert("Please select attendance.");
+        return;
+
+    }
+
+    const selectedGuests = [];
+
+    document
+    .querySelectorAll(
+        '#checkboxes input[type="checkbox"]:checked'
+    )
+    .forEach(item => {
+
+        selectedGuests.push(
+            item.value
+        );
+
+    });
+
+    alert(
+`Thank you for your RSVP!
+
+Response: ${attendance}
+
+Guests Attending:
+${selectedGuests.join(", ")}`
+    );
 
 }
 
