@@ -364,14 +364,13 @@ if(!data){
             const words =
             fullName.split(/\s+/);
 
-            const firstName =
-words[0];
+const firstName = words[0];
 
 return (
-
-    firstName === guestName
-
+    firstName === guestName ||
+    fullName === guestName
 );
+
 
         });
 
