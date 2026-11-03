@@ -454,13 +454,11 @@ async function submitRSVP(){
 
     try{
 
-const response = await fetch(
+await fetch(
 "https://script.google.com/macros/s/AKfycbwgG4seCoh9iaFLsyH_WD7wU6TqzUtCySuLloLETAg-u6a82SpXE7NNGSOIlV5W_gw6/exec",
 {
     method:"POST",
-    headers:{
-        "Content-Type":"application/json"
-    },
+    mode:"no-cors",
     body:JSON.stringify({
         guest: guestName,
         attendance: attendance,
@@ -468,18 +466,14 @@ const response = await fetch(
     })
 });
 
-const result = await response.text();
-
-alert(result);
-
-        alert(
+alert(
 `🎉 Thank you for your RSVP!
 
 Response: ${attendance}
 
 Guests Attending:
 ${selectedGuests.join(", ") || "None"}`
-        );
+);
 
 }catch(error){
 
