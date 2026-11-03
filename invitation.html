@@ -91,15 +91,11 @@ button:hover{
 
 <h1>🦖 Claudio's RSVP</h1>
 
-<p class="subtitle">
-RESERVED IN YOUR HONOR
-</p>
+<p class="subtitle">RESERVED IN YOUR HONOR</p>
 
 <div id="reservedCount" class="reserved">0</div>
 
-<p class="subtitle">
-GUESTS INCLUDED IN THE INVITATION
-</p>
+<p class="subtitle">GUESTS INCLUDED IN THE INVITATION</p>
 
 <div id="guestList"></div>
 
@@ -128,6 +124,21 @@ const guests = {
 "allan":{
 reserved:1,
 companions:["Allan Sanchez"]
+},
+
+"allan sanchez":{
+reserved:1,
+companions:["Allan Sanchez"]
+},
+
+"allen":{
+reserved:1,
+companions:["Allen Sanchez"]
+},
+
+"allen sanchez":{
+reserved:1,
+companions:["Allen Sanchez"]
 },
 
 "analiza":{
@@ -249,13 +260,6 @@ companions:[
 ]
 },
 
-"allen":{
-reserved:1,
-companions:[
-"Allen Sanchez"
-]
-},
-
 "rica":{
 reserved:1,
 companions:[
@@ -369,7 +373,7 @@ const data = guests[guestName];
 if(data){
 
 document.getElementById("reservedCount").innerHTML =
-data.reserved;
+data.companions.length;
 
 let guestHTML = "";
 
