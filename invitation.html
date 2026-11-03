@@ -41,7 +41,20 @@ h1{
     color:#7d8aa5;
     margin-bottom:20px;
 }
+    
+.guest-note{
+    text-align:center;
+    color:#7d8aa5;
+    font-size:14px;
+    line-height:1.6;
+    max-width:450px;
+    margin:10px auto 25px;
+}
 
+.checkbox-title{
+    margin-top:25px;
+}
+    
 .guest{
     margin:10px 0;
     font-size:18px;
@@ -104,7 +117,14 @@ Reserved In Your Honor
 <div id="reservedCount" class="reserved"></div>
 
 <p class="subtitle">
-Guests Included In The Invitation
+Guests Included In This Invitation
+</p>
+
+<p class="guest-note">
+All guests included under your invitation are listed below.
+You may respond on behalf of your family members or companions.
+
+Please select the names of those who will be joining Claudio's celebration.
 </p>
 
 <div id="guestList"></div>
@@ -117,7 +137,9 @@ Guests Included In The Invitation
 <option value="Decline">Regretfully Declines</option>
 </select>
 
-<h3>Guests Attending</h3>
+<h3 class="checkbox-title">
+Who Will Be Attending?
+</h3>
 
 <div id="checkboxes" class="checkbox"></div>
 
