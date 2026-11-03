@@ -101,6 +101,32 @@ button:hover{
     background:#1256a0;
 }
 
+.attending-section{
+    display:none;
+    margin-top:18px;
+}
+
+.attending-note{
+    background:#f5f9ff;
+    border:1px solid #d9e5f2;
+    border-radius:14px;
+    padding:14px;
+    margin-bottom:15px;
+    text-align:center;
+}
+
+.attending-note p{
+    margin:8px 0 0;
+    color:#7d8aa5;
+    font-size:13px;
+    line-height:1.5;
+}
+
+.checkbox-title{
+    margin:0;
+    color:#1657a8;
+}
+
 </style>
 </head>
 
@@ -111,13 +137,13 @@ button:hover{
 <h1>🦖 Matmat's RSVP</h1>
 
 <p class="subtitle">
-Reserved In Your Honor
+Your Invitation Includes
 </p>
 
 <div id="reservedCount" class="reserved"></div>
 
 <p class="subtitle">
-Guests Included In This Invitation
+Guest List
 </p>
 
 <p class="guest-note">
@@ -129,24 +155,38 @@ Please select the names of those who will be joining Matmat's celebration.
 
 <div id="guestList"></div>
 
-<h3>Attendance</h3>
+<h3>RSVP Response</h3>
 
-<select id="attendance">
-<option value="">Select your response</option>
-<option value="Accept">Joyfully Accepts</option>
-<option value="Decline">Regretfully Declines</option>
+<select id="attendance" onchange="toggleGuests()">
+    <option value="">Please select your response</option>
+    <option value="Accept">Joyfully Accepts</option>
+    <option value="Decline">Regretfully Declines</option>
 </select>
 
-<h3 class="checkbox-title">
-Who Will Be Attending?
-</h3>
+<div id="attendingSection" class="attending-section">
 
-<div id="checkboxes" class="checkbox"></div>
+    <div class="attending-note">
+
+        <h3 class="checkbox-title">
+            Guests Joining The Celebration
+        </h3>
+
+        <p>
+            Please select the guest(s) who will be attending.
+            This RSVP will be submitted on behalf of everyone
+            included in your invitation.
+        </p>
+
+    </div>
+
+    <div id="checkboxes" class="checkbox"></div>
+
+</div>
 
 <button onclick="submitRSVP()">
 CONFIRM ATTENDANCE
 </button>
-
+    
 </div>
 
 <script>
@@ -447,7 +487,32 @@ if(data){
     window.location.href="index.html";
 
 }
+    
+function toggleGuests(){
 
+    const attendance =
+    document.getElementById("attendance").value;
+
+    const section =
+    document.getElementById("attendingSection");
+
+    if(attendance === "Accept"){
+
+        section.style.display = "block";
+
+    }else{
+
+        section.style.display = "none";
+
+        document
+        .querySelectorAll(
+            '#checkboxes input[type="checkbox"]'
+        )
+        .forEach(box => box.checked = false);
+
+    }
+
+}
 async function submitRSVP(){
 
     const attendance =
