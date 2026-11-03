@@ -466,14 +466,68 @@ await fetch(
     })
 });
 
-alert(
-`🎉 Thank you for your RSVP!
+document.body.innerHTML = `
+<div style="
+max-width:700px;
+margin:60px auto;
+padding:40px;
+text-align:center;
+font-family:Georgia, serif;
+background:white;
+border-radius:30px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+">
 
-Response: ${attendance}
+<h1 style="color:#1667c0;font-size:60px;">
+🦖
+</h1>
 
-Guests Attending:
-${selectedGuests.join(", ") || "None"}`
-);
+<h1 style="color:#1667c0;">
+Thank You!
+</h1>
+
+<p style="
+font-size:22px;
+color:#555;
+line-height:1.8;
+">
+
+Your RSVP has been successfully received.
+
+<br><br>
+
+We can't wait to celebrate
+<strong>Claudio's 1st Birthday</strong>
+with you!
+
+</p>
+
+<div style="
+margin-top:30px;
+padding:20px;
+background:#f5f9ff;
+border-radius:15px;
+">
+
+<p>
+<strong>Response:</strong>
+${attendance}
+</p>
+
+<p>
+<strong>Guests Attending:</strong>
+<br>
+${selectedGuests.join("<br>") || "None"}
+</p>
+
+</div>
+
+<h2 style="margin-top:30px;color:#1667c0;">
+🎂 See you at the party! 🎂
+</h2>
+
+</div>
+`;
 
 }catch(error){
 
