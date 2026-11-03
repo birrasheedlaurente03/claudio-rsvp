@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>RSVP</title>
+
+<style>
+
+body{
+    margin:0;
+    background:#eef5fb;
+    font-family:Georgia, serif;
+}
+
+.container{
+    max-width:500px;
+    margin:25px auto;
+    background:white;
+    border-radius:30px;
+    padding:30px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+h1{
+    text-align:center;
+    color:#1657a8;
+}
+
+.reserved{
+    text-align:center;
+    font-size:80px;
+    color:#1657a8;
+    margin:10px 0;
+}
+
+.subtitle{
+    text-align:center;
+    color:#7d8aa5;
+    letter-spacing:3px;
+}
+
+.guest{
+    margin:12px 0;
+    font-size:22px;
+}
+
+select{
+    width:100%;
+    padding:18px;
+    border-radius:16px;
+    border:1px solid #cfdcec;
+    font-size:18px;
+}
+
+.checkbox{
+    margin:20px 0;
+}
+
+.checkbox label{
+    display:block;
+    padding:15px;
+    border:1px solid #d9e5f2;
+    border-radius:15px;
+    margin-bottom:10px;
+}
+
+button{
+    width:100%;
+    border:none;
+    background:#1667c0;
+    color:white;
+    padding:20px;
+    border-radius:18px;
+    font-size:24px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1256a0;
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<h1>Invitation Found</h1>
+
+<p class="subtitle">
+RESERVED IN YOUR HONOR
+</p>
+
+<div id="reservedCount" class="reserved">
+0
+</div>
+
+<p class="subtitle">
+GUESTS INCLUDED IN THE INVITATION
+</p>
+
+<div id="guestList"></div>
+
+<h3>ATTENDANCE</h3>
+
+<select id="attendance">
+<option value="">
+Select your response
+</option>
+
+<option value="Accept">
+Joyfully Accepts
+</option>
+
+<option value="Decline">
+Regretfully Declines
+</option>
+</select>
+
+<h3>
+Kindly confirm the guests attending
+</h3>
+
+<div id="checkboxes"
+class="checkbox"></div>
+
+<button onclick="submitRSVP()">
+CONFIRM ATTENDANCE
+</button>
+
+</div>
+
+<script>
+
+const guests = {
+
+"Rasheed":{
+reserved:2,
+companions:[
+"Bir Rasheed Laurente",
+"Alyanna Sanchez-Laurente"
+]
+},
+
+"Marco":{
+reserved:3,
+companions:[
+"Marco",
+"Companion 1",
+"Companion 2"
+]
+}
+
+};
+
+const params =
+new URLSearchParams(window.location.search);
+
+const guestName =
+params.get("guest");
+
+const data =
+guests[guestName];
+
+if(data){
+
+document.getElementById(
+"reservedCount"
+).innerHTML=data.reserved;
+
+let guestHTML="";
+
+data.companions.forEach((name,index)=>{
+
+guestHTML +=
+`<div class="guest">
+${index+1}. ${name}
+</div>`;
+
+});
+
+document.getElementById(
+"guestList"
+).innerHTML=guestHTML;
+
+let checkboxHTML="";
+
+data.companions.forEach(name=>{
+
+checkboxHTML +=
+`
+<label>
+<input type="checkbox">
+ ${name}
+</label>
+`;
+
+});
+
+document.getElementById(
+"checkboxes"
+).innerHTML=checkboxHTML;
+
+}else{
+
+alert("Invitation not found.");
+
+window.location.href="index.html";
+
+}
+
+function submitRSVP(){
+
+let response =
+document.getElementById(
+"attendance"
+).value;
+
+if(!response){
+
+alert(
+"Please select attendance."
+);
+
+return;
+
+}
+
+alert(
+"RSVP submitted successfully!"
+);
+
+}
+
+</script>
+
+</body>
+</html>
