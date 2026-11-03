@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>RSVP</title>
+<title>Claudio's RSVP</title>
 
 <style>
 
@@ -15,7 +15,7 @@ body{
 }
 
 .container{
-    max-width:500px;
+    max-width:600px;
     margin:25px auto;
     background:white;
     border-radius:30px;
@@ -38,12 +38,12 @@ h1{
 .subtitle{
     text-align:center;
     color:#7d8aa5;
-    letter-spacing:3px;
+    letter-spacing:2px;
 }
 
 .guest{
-    margin:12px 0;
-    font-size:22px;
+    margin:10px 0;
+    font-size:20px;
 }
 
 select{
@@ -64,6 +64,7 @@ select{
     border:1px solid #d9e5f2;
     border-radius:15px;
     margin-bottom:10px;
+    cursor:pointer;
 }
 
 button{
@@ -83,19 +84,18 @@ button:hover{
 
 </style>
 </head>
+
 <body>
 
 <div class="container">
 
-<h1>Invitation Found</h1>
+<h1>🦖 Claudio's RSVP</h1>
 
 <p class="subtitle">
 RESERVED IN YOUR HONOR
 </p>
 
-<div id="reservedCount" class="reserved">
-0
-</div>
+<div id="reservedCount" class="reserved">0</div>
 
 <p class="subtitle">
 GUESTS INCLUDED IN THE INVITATION
@@ -106,25 +106,14 @@ GUESTS INCLUDED IN THE INVITATION
 <h3>ATTENDANCE</h3>
 
 <select id="attendance">
-<option value="">
-Select your response
-</option>
-
-<option value="Accept">
-Joyfully Accepts
-</option>
-
-<option value="Decline">
-Regretfully Declines
-</option>
+    <option value="">Select your response</option>
+    <option value="Accept">Joyfully Accepts</option>
+    <option value="Decline">Regretfully Declines</option>
 </select>
 
-<h3>
-Kindly confirm the guests attending
-</h3>
+<h3>Kindly confirm the guests attending</h3>
 
-<div id="checkboxes"
-class="checkbox"></div>
+<div id="checkboxes" class="checkbox"></div>
 
 <button onclick="submitRSVP()">
 CONFIRM ATTENDANCE
@@ -136,77 +125,286 @@ CONFIRM ATTENDANCE
 
 const guests = {
 
-"Rasheed":{
-reserved:2,
+"allan":{
+reserved:1,
+companions:["Allan Sanchez"]
+},
+
+"analiza":{
+reserved:1,
+companions:["Analiza Sanchez"]
+},
+
+"ariel":{
+reserved:8,
 companions:[
-"Bir Rasheed Laurente",
-"Alyanna Sanchez-Laurente"
+"Ariel Llosis",
+"Jun-jun Llosis",
+"Patricia Llosis",
+"Rolie Llosis",
+"Jadred Llosis",
+"Anthony Llosis",
+"Lola Glenda Manforte",
+"Lolo Sixto Llosis"
 ]
 },
 
-"Marco":{
+"kharlsen":{
 reserved:3,
 companions:[
-"Marco",
-"Companion 1",
-"Companion 2"
+"Kharlsen Hadjulani",
+"Ninang Nursida Hadjulanin",
+"Ninong Ama"
+]
+},
+
+"alyssa":{
+reserved:1,
+companions:[
+"Alyssa Sanchez-Hadjulani"
+]
+},
+
+"shane":{
+reserved:4,
+companions:[
+"Natalie Shane Sanchez",
+"Tita Natie Cahilig",
+"Vandam Villanueva",
+"Eli Villanueva"
+]
+},
+
+"charles":{
+reserved:4,
+companions:[
+"Charles Aguirre",
+"Julia Aguirre",
+"Gabe Aguirre",
+"Tita Analyn Belda"
+]
+},
+
+"ingrid":{
+reserved:6,
+companions:[
+"Ingrid Dabu",
+"Lexus Dabu",
+"Bryce Dabu",
+"Ate Mary Ann Laurente",
+"Isaiah Urbina",
+"Miel Urbina"
+]
+},
+
+"michael":{
+reserved:3,
+companions:[
+"Kuya Michael Laurente",
+"Ate Vhie Laurente",
+"Miles Laurente"
+]
+},
+
+"domingo":{
+reserved:1,
+companions:[
+"Papa Domingo Laurente"
+]
+},
+
+"fatima":{
+reserved:1,
+companions:[
+"Mama Fatima Uddin"
+]
+},
+
+"alshamieh":{
+reserved:5,
+companions:[
+"Kuya Alshamieh Laurente",
+"Marjorie Maturan-Laurente",
+"Kiefer Laurente",
+"Kai Laurente",
+"Kali Laurente"
+]
+},
+
+"khalid":{
+reserved:4,
+companions:[
+"Khalid Laurente",
+"Leslie Samiado-Laurente",
+"Iyah Laurente",
+"Shaniah Laurente"
+]
+},
+
+"shalimar":{
+reserved:2,
+companions:[
+"Shalimar Laurente",
+"April Grace"
+]
+},
+
+"allen":{
+reserved:1,
+companions:[
+"Allen Sanchez"
+]
+},
+
+"rica":{
+reserved:1,
+companions:[
+"Rica Trinidad"
+]
+},
+
+"namae":{
+reserved:1,
+companions:[
+"Namae Sanchez"
+]
+},
+
+"charlene":{
+reserved:1,
+companions:[
+"Charlene Aledo"
+]
+},
+
+"jhagie":{
+reserved:5,
+companions:[
+"Jhagie Sanchez",
+"Amber Perigrino",
+"Louvelle Sanchez",
+"Joseph Mark Cura",
+"John Mark Cura"
+]
+},
+
+"mika":{
+reserved:3,
+companions:[
+"Mika Sanchez",
+"Liza Realda",
+"Vence Andrew Sanchez"
+]
+},
+
+"jafet":{
+reserved:3,
+companions:[
+"Jafet Mark Cura",
+"Princess Cura",
+"Lily Cura"
+]
+},
+
+"marco":{
+reserved:2,
+companions:[
+"Marco Ayrton Medinacelli",
+"Aila Abulencia"
+]
+},
+
+"gian":{
+reserved:3,
+companions:[
+"Gian Carlo Bonto",
+"Austine Timkang",
+"Jacob Bonto"
+]
+},
+
+"bernard":{
+reserved:2,
+companions:[
+"Bernard Ignacio",
+"Ivy Faith Barcelona"
+]
+},
+
+"gabriel":{
+reserved:4,
+companions:[
+"Gabriel Joseph Mendoza",
+"Jenny Gabrador",
+"Daphne Mendoza",
+"Madi Mendoza"
+]
+},
+
+"ranier":{
+reserved:1,
+companions:[
+"Ranier Manalo"
+]
+},
+
+"carlo":{
+reserved:1,
+companions:[
+"Carlo Caligagan"
 ]
 }
 
 };
 
-const params =
-new URLSearchParams(window.location.search);
+const params = new URLSearchParams(window.location.search);
 
 const guestName =
-params.get("guest");
+params.get("guest")
+?.trim()
+?.toLowerCase();
 
-const data =
-guests[guestName];
+const data = guests[guestName];
 
 if(data){
 
-document.getElementById(
-"reservedCount"
-).innerHTML=data.reserved;
+document.getElementById("reservedCount").innerHTML =
+data.reserved;
 
-let guestHTML="";
+let guestHTML = "";
 
 data.companions.forEach((name,index)=>{
 
-guestHTML +=
-`<div class="guest">
-${index+1}. ${name}
-</div>`;
+guestHTML += `
+<div class="guest">
+${index + 1}. ${name}
+</div>
+`;
 
 });
 
-document.getElementById(
-"guestList"
-).innerHTML=guestHTML;
+document.getElementById("guestList").innerHTML =
+guestHTML;
 
-let checkboxHTML="";
+let checkboxHTML = "";
 
 data.companions.forEach(name=>{
 
-checkboxHTML +=
-`
+checkboxHTML += `
 <label>
-<input type="checkbox">
+<input type="checkbox" value="${name}">
  ${name}
 </label>
 `;
 
 });
 
-document.getElementById(
-"checkboxes"
-).innerHTML=checkboxHTML;
+document.getElementById("checkboxes").innerHTML =
+checkboxHTML;
 
 }else{
 
 alert("Invitation not found.");
-
 window.location.href="index.html";
 
 }
@@ -214,22 +412,30 @@ window.location.href="index.html";
 function submitRSVP(){
 
 let response =
-document.getElementById(
-"attendance"
-).value;
+document.getElementById("attendance").value;
 
 if(!response){
 
-alert(
-"Please select attendance."
-);
-
+alert("Please select attendance.");
 return;
 
 }
 
+let selectedGuests = [];
+
+document
+.querySelectorAll('#checkboxes input[type="checkbox"]:checked')
+.forEach(cb => {
+
+selectedGuests.push(cb.value);
+
+});
+
 alert(
-"RSVP submitted successfully!"
+"Thank you for your RSVP!\n\nResponse: "
++ response +
+"\nGuests Attending: "
++ selectedGuests.join(", ")
 );
 
 }
