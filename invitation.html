@@ -481,15 +481,13 @@ Guests Attending:
 ${selectedGuests.join(", ") || "None"}`
         );
 
-    }catch(error){
+}catch(error){
 
-        alert(
-        "Unable to submit RSVP. Please try again."
-        );
+    alert(error);
 
-        console.error(error);
+    console.error(error);
 
-    }
+}
 
 }
 
