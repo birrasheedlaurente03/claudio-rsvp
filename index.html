@@ -75,19 +75,34 @@ label{
     font-size:14px;
 }
 
+.search-wrapper{
+    position:relative;
+}
+
+.search-icon{
+    position:absolute;
+    left:18px;
+    top:50%;
+    transform:translateY(-50%);
+    font-size:20px;
+    opacity:.5;
+}
+
 input{
     width:100%;
     box-sizing:border-box;
-    padding:22px;
+    padding:22px 22px 22px 55px;
     border:1px solid #d8e3f1;
     border-radius:20px;
     font-size:18px;
     background:white;
+    transition:.25s;
 }
 
 input:focus{
     outline:none;
     border-color:#1657a8;
+    box-shadow:0 0 0 4px rgba(22,87,168,.1);
 }
 
 button{
@@ -102,10 +117,25 @@ button{
     letter-spacing:3px;
     cursor:pointer;
     font-family:Georgia, serif;
+    transition:.25s;
 }
 
 button:hover{
     background:#1256a0;
+    transform:translateY(-2px);
+}
+
+button:disabled{
+    background:#7da7d8;
+    cursor:not-allowed;
+    transform:none;
+}
+
+.search-note{
+    text-align:center;
+    font-size:13px;
+    color:#8a8a8a;
+    margin-top:15px;
 }
 
 </style>
@@ -138,32 +168,60 @@ Kindly confirm your attendance below.
 
 <label>GUEST NAME</label>
 
+<div class="search-wrapper">
+
+<span class="search-icon">🔍</span>
+
 <input
 id="guestName"
-placeholder="Enter your first name as written on the invitation">
+type="text"
+placeholder="Type your first name">
 
-<button onclick="findGuest()">
+</div>
+
+<button id="searchBtn" onclick="findGuest()">
 SEARCH
 </button>
+
+<p class="search-note">
+Search using the name printed on your invitation.
+</p>
 
 </div>
 
 <script>
 
+window.onload = () => {
+    document.getElementById("guestName").focus();
+};
+
+document
+.getElementById("guestName")
+.addEventListener("keypress", function(e){
+    if(e.key === "Enter"){
+        findGuest();
+    }
+});
+
 function findGuest(){
 
-let guest =
-document.getElementById("guestName").value;
+    let guest =
+    document.getElementById("guestName").value.trim();
 
-if(!guest){
-alert("Please enter your name.");
-return;
-}
+    if(!guest){
+        alert("Please enter your name.");
+        return;
+    }
 
-window.location.href =
-"invitation.html?guest="
-+ encodeURIComponent(guest);
+    const btn =
+    document.getElementById("searchBtn");
 
+    btn.disabled = true;
+    btn.innerHTML = "SEARCHING...";
+
+    window.location.href =
+    "invitation.html?guest=" +
+    encodeURIComponent(guest);
 }
 
 </script>
