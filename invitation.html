@@ -23,35 +23,71 @@ companions:[
 
 };
 
-const search = "aila";
+// Kunin ang guest mula sa URL
+// halimbawa: invitation.html?guest=jacob
 
-let data = guests[search];
+const params = new URLSearchParams(window.location.search);
 
+const search =
+(params.get("guest") || "")
+.trim()
+.toLowerCase();
+
+let data = null;
+
+// Search sa key (marco, gian, etc.)
+if(guests[search]){
+    data = guests[search];
+}
+
+// Search sa lahat ng pangalan ng companions
 if(!data){
 
-for(const key in guests){
+    for(const key in guests){
 
-const invitation = guests[key];
+        const invitation = guests[key];
 
-const found = invitation.companions.some(person => {
+        const found = invitation.companions.some(person => {
 
-return (
-person.toLowerCase() === search ||
-person.split(" ")[0].toLowerCase() === search
-);
+            const fullName =
+            person.toLowerCase().trim();
 
-});
+            const words =
+            fullName.split(" ");
 
-if(found){
-data = invitation;
-break;
+            return (
+
+                fullName === search ||
+
+                fullName.includes(search) ||
+
+                words.includes(search)
+
+            );
+
+        });
+
+        if(found){
+
+            data = invitation;
+            break;
+
+        }
+
+    }
+
 }
 
-}
+if(data){
+
+    console.log("Invitation Found");
+    console.log(data);
+
+}else{
+
+    console.log("Invitation Not Found");
 
 }
-
-console.log(data);
 
 </script>
 
