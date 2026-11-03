@@ -16,43 +16,39 @@ body{
 
 .container{
     max-width:600px;
-    margin:15px auto;
+    margin:25px auto;
     background:white;
-    border-radius:24px;
-    padding:20px;
+    border-radius:30px;
+    padding:30px;
     box-shadow:0 10px 30px rgba(0,0,0,.08);
 }
 
 h1{
     text-align:center;
     color:#1657a8;
-    margin-bottom:2px;
-    font-size:42px;
+    margin-bottom:5px;
 }
 
 .reserved{
     text-align:center;
-    font-size:65px;
+    font-size:80px;
     color:#1657a8;
     font-weight:bold;
-    line-height:1;
-    margin:5px 0;
 }
 
 .subtitle{
     text-align:center;
     color:#7d8aa5;
-    margin-bottom:12px;
-    font-size:14px;
+    margin-bottom:20px;
 }
     
 .guest-note{
     text-align:center;
     color:#7d8aa5;
-    font-size:12px;
-    line-height:1.4;
+    font-size:14px;
+    line-height:1.6;
     max-width:450px;
-    margin:8px auto 15px;
+    margin:10px auto 25px;
 }
 
 .checkbox-title{
@@ -60,34 +56,33 @@ h1{
 }
     
 .guest{
-    margin:5px 0;
-    padding:8px 12px;
-    font-size:16px;
+    margin:10px 0;
+    font-size:18px;
+    padding:10px;
     background:#f5f9ff;
-    border-radius:8px;
+    border-radius:10px;
 }
 
 select{
     width:100%;
-    padding:12px;
-    border-radius:10px;
+    padding:15px;
+    border-radius:12px;
     border:1px solid #cfdcec;
-    font-size:15px;
+    font-size:16px;
 }
 
 .checkbox{
-    margin-top:10px;
+    margin-top:15px;
 }
 
 .checkbox label{
     display:block;
-    padding:10px 12px;
-    margin-bottom:6px;
+    padding:12px;
+    margin-bottom:10px;
     border:1px solid #d9e5f2;
-    border-radius:10px;
+    border-radius:12px;
     cursor:pointer;
     background:white;
-    font-size:15px;
 }
 
 button{
@@ -95,35 +90,17 @@ button{
     border:none;
     background:#1667c0;
     color:white;
-    padding:14px;
-    border-radius:12px;
-    font-size:18px;
+    padding:18px;
+    border-radius:15px;
+    font-size:20px;
     cursor:pointer;
-    margin-top:15px;
+    margin-top:20px;
 }
 
 button:hover{
     background:#1256a0;
 }
-.header{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:10px;
-    margin-bottom:5px;
-}
 
-.header img{
-    width:36px;
-    height:36px;
-    object-fit:contain;
-}
-
-.header span{
-    font-size:42px;
-    font-weight:bold;
-    color:#1657a8;
-}
 </style>
 </head>
 
@@ -131,10 +108,7 @@ button:hover{
 
 <div class="container">
 
-<div class="header">
-    <img src="dinosaur.png" alt="Dinosaur">
-    <span>Claudio's RSVP</span>
-</div>
+<h1>🦖 Claudio's RSVP</h1>
 
 <p class="subtitle">
 Reserved In Your Honor
@@ -148,7 +122,6 @@ Guests Included In This Invitation
 
 <p class="guest-note">
 All guests included under your invitation are listed below.
-
 You may respond on behalf of your family members or companions.
 
 Please select the names of those who will be joining Claudio's celebration.
@@ -177,4 +150,426 @@ CONFIRM ATTENDANCE
 </div>
 
 <script>
+
+const guests = {
+
+"allan":{
+companions:["Allan Sanchez"]
+},
+
+"allen":{
+companions:["Allen Sanchez"]
+},
+
+"analiza":{
+companions:["Analiza Sanchez"]
+},
+
+"ariel":{
+companions:[
+"Ariel Llosis",
+"Jun-jun Llosis",
+"Patricia Llosis",
+"Rolie Llosis",
+"Jadred Llosis",
+"Anthony Llosis",
+"Lola Glenda Manforte",
+"Lolo Sixto Llosis"
+]
+},
+
+"kharlsen":{
+companions:[
+"Kharlsen Hadjulani",
+"Nursida Hadjulani",
+"Phulul Hadjulani"
+]
+},
+
+"alyssa":{
+companions:[
+"Alyssa Sanchez-Hadjulani"
+]
+},
+
+"shane":{
+companions:[
+"Natalie Shane Sanchez",
+"Natie Cahilig",
+"Vandam Villanueva",
+"Eli Villanueva"
+]
+},
+
+"charles":{
+companions:[
+"Charles Aguirre",
+"Julia Aguirre",
+"Gabe Aguirre",
+"Analyn Belda"
+]
+},
+
+"ingrid":{
+companions:[
+"Ingrid Dabu",
+"Lexus Dabu",
+"Bryce Dabu",
+"Mary Ann Laurente",
+"Isaiah Urbina",
+"Miel Urbina"
+]
+},
+
+"michael":{
+companions:[
+"Michael Laurente",
+"Vhie Laurente",
+"Miles Laurente"
+]
+},
+
+"domingo":{
+companions:[
+"Domingo Laurente"
+]
+},
+
+"fatima":{
+companions:[
+"Fatima Uddin"
+]
+},
+
+"alshamieh":{
+companions:[
+"Kuya Alshamieh Laurente",
+"Marjorie Maturan-Laurente",
+"Kiefer Laurente",
+"Kai Laurente",
+"Kali Laurente"
+]
+},
+
+"khalid":{
+companions:[
+"Khalid Laurente",
+"Leslie Samiado-Laurente",
+"Iyah Laurente",
+"Shaniah Laurente"
+]
+},
+
+"shalimar":{
+companions:[
+"Shalimar Laurente",
+"April Grace"
+]
+},
+
+"rica":{
+companions:[
+"Rica Trinidad"
+]
+},
+
+"namae":{
+companions:[
+"Namae Sanchez"
+]
+},
+
+"charlene":{
+companions:[
+"Charlene Aledo"
+]
+},
+
+"jhagie":{
+companions:[
+"Jhagie Sanchez",
+"Amber Perigrino",
+"Louvelle Sanchez",
+"Joseph Mark Cura",
+"John Mark Cura"
+]
+},
+
+"mika":{
+companions:[
+"Mika Sanchez",
+"Liza Realda",
+"Vence Andrew Sanchez"
+]
+},
+
+"jafet":{
+companions:[
+"Jafet Mark Cura",
+"Princess Cura",
+"Lily Cura"
+]
+},
+
+"marco":{
+companions:[
+"Marco Ayrton Medinacelli",
+"Aila Abulencia"
+]
+},
+
+"gian":{
+companions:[
+"Gian Carlo Bonto",
+"Austine Timkang",
+"Jacob Bonto"
+]
+},
+
+"bernard":{
+companions:[
+"Bernard Ignacio",
+"Ivy Faith Barcelona"
+]
+},
+
+"gabriel":{
+companions:[
+"Gabriel Joseph Mendoza",
+"Jenny Gabrador",
+"Daphne Mendoza",
+"Madi Mendoza"
+]
+},
+
+"ranier":{
+companions:[
+"Ranier Manalo"
+]
+},
+
+"carlo":{
+companions:[
+"Carlo Caligagan"
+]
+}
+
+};
+
+const params = new URLSearchParams(window.location.search);
+
+const guestName =
+(params.get("guest") || "")
+.trim()
+.toLowerCase();
+
+let data = null;
+
+/* direct search */
+if(guests[guestName]){
+    data = guests[guestName];
+}
+
+/* search all companion names */
+if(!data){
+
+    for(const key in guests){
+
+        const invitation = guests[key];
+
+        const found =
+        invitation.companions.some(person => {
+
+            const fullName =
+            person.toLowerCase().trim();
+
+            const words =
+            fullName.split(/\s+/);
+
+const firstName = words[0];
+
+return (
+    firstName === guestName ||
+    fullName === guestName
+);
+
+
+        });
+
+        if(found){
+            data = invitation;
+            break;
+        }
+
+    }
+
+}
+
+if(data){
+
+    document.getElementById("reservedCount").innerHTML =
+    data.companions.length;
+
+    let guestHtml = "";
+
+    data.companions.forEach((person,index)=>{
+
+        guestHtml += `
+        <div class="guest">
+        ${index + 1}. ${person}
+        </div>
+        `;
+
+    });
+
+    document.getElementById("guestList").innerHTML =
+    guestHtml;
+
+    let checkboxes = "";
+
+    data.companions.forEach(person=>{
+
+        checkboxes += `
+        <label>
+            <input type="checkbox" value="${person}">
+            ${person}
+        </label>
+        `;
+
+    });
+
+    document.getElementById("checkboxes").innerHTML =
+    checkboxes;
+
+}else{
+
+    alert("Invitation not found.");
+    window.location.href="index.html";
+
+}
+
+async function submitRSVP(){
+
+    const attendance =
+    document.getElementById("attendance").value;
+
+    if(!attendance){
+
+        alert("Please select attendance.");
+        return;
+
+    }
+
+    const selectedGuests = [];
+
+    document
+    .querySelectorAll(
+        '#checkboxes input[type="checkbox"]:checked'
+    )
+    .forEach(item => {
+
+        selectedGuests.push(
+            item.value
+        );
+
+    });
+
+    if (
+    attendance === "Accept" &&
+    selectedGuests.length === 0
+){
+    alert(
+    "Please select at least one guest who will attend."
+    );
+    return;
+}
+
+    try{
+
+await fetch(
+"https://script.google.com/macros/s/AKfycbwgG4seCoh9iaFLsyH_WD7wU6TqzUtCySuLloLETAg-u6a82SpXE7NNGSOIlV5W_gw6/exec",
+{
+    method:"POST",
+    mode:"no-cors",
+    body:JSON.stringify({
+        guest: guestName,
+        attendance: attendance,
+        attendees: selectedGuests
+    })
+});
+
+document.body.innerHTML = `
+<div style="
+max-width:700px;
+margin:60px auto;
+padding:40px;
+text-align:center;
+font-family:Georgia, serif;
+background:white;
+border-radius:30px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+">
+
+<h1 style="color:#1667c0;font-size:60px;">
+🦖
+</h1>
+
+<h1 style="color:#1667c0;">
+Thank You!
+</h1>
+
+<p style="
+font-size:22px;
+color:#555;
+line-height:1.8;
+">
+
+Your RSVP has been successfully received.
+
+<br><br>
+
+We can't wait to celebrate
+<strong>Claudio's 1st Birthday</strong>
+with you!
+
+</p>
+
+<div style="
+margin-top:30px;
+padding:20px;
+background:#f5f9ff;
+border-radius:15px;
+">
+
+<p>
+<strong>Response:</strong>
+${attendance}
+</p>
+
+<p>
+<strong>Guests Attending:</strong>
+<br>
+${selectedGuests.join("<br>") || "None"}
+</p>
+
+</div>
+
+<h2 style="margin-top:30px;color:#1667c0;">
+🎂 See you at the party! 🎂
+</h2>
+
+</div>
+`;
+
+}catch(error){
+
+    console.error(error);
+
+}
+
+}
+
+</script>
+
+</body>
 </html>
