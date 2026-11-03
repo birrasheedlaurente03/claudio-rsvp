@@ -368,7 +368,37 @@ params.get("guest")
 ?.trim()
 ?.toLowerCase();
 
-const data = guests[guestName];
+let data = guests[guestName];
+
+if(!data){
+
+for(const key in guests){
+
+const invitation = guests[key];
+
+const found = invitation.companions.some(person => {
+
+const fullName = person.toLowerCase();
+
+const firstName =
+person.split(" ")[0].toLowerCase();
+
+return (
+fullName === guestName ||
+firstName === guestName
+);
+
+});
+
+if(found){
+data = invitation;
+break;
+}
+
+}
+
+}
+
 
 if(data){
 
