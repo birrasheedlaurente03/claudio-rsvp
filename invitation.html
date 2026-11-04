@@ -58,9 +58,10 @@ h1{
 .guest{
     margin:10px 0;
     font-size:18px;
-    padding:10px;
+    padding:14px 18px;
     background:#f5f9ff;
-    border-radius:10px;
+    border-radius:12px;
+    text-align:left;
 }
 
 select{
@@ -143,7 +144,7 @@ Your Invitation Includes
 <div id="reservedCount" class="reserved"></div>
 
 <p class="subtitle">
-Guest List
+Reserved Seats
 </p>
 
 <p class="guest-note">
@@ -449,15 +450,15 @@ if(data){
 
     let guestHtml = "";
 
-    data.companions.forEach((person,index)=>{
+    data.companions.forEach(person=>{
 
-        guestHtml += `
-        <div class="guest">
-        ${index + 1}. ${person}
-        </div>
-        `;
+    guestHtml += `
+    <div class="guest">
+    ${person}
+    </div>
+    `;
 
-    });
+});
 
     document.getElementById("guestList").innerHTML =
     guestHtml;
