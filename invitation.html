@@ -560,6 +560,31 @@ await fetch(
         attendees: selectedGuests
     })
 });
+        let reservedSeatsHtml = "";
+
+if (attendance === "Accept") {
+
+    const names =
+    encodeURIComponent(
+        selectedGuests.join("|")
+    );
+
+    const seatResponse =
+    await fetch(
+        `https://script.google.com/macros/s/AKfycbwgG4seCoh9iaFLsyH_WD7wU6TqzUtCySuLloLETAg-u6a82SpXE7NNGSOIlV5W_gw6/exec?action=seats&names=${names}`
+    );
+
+    const seats =
+    await seatResponse.json();
+
+    reservedSeatsHtml =
+    seats
+    .map(seat =>
+        `${seat.name} - Seat ${seat.seat}`
+    )
+    .join("<br>");
+
+}
 
 document.body.innerHTML = `
 <div style="
@@ -612,7 +637,7 @@ ${attendance}
 <p>
 <strong>📍 Reserved Seats:</strong>
 <br>
-${selectedGuests.join("<br>") || "None"}
+${reservedSeatsHtml || "None"}
 </p>
 
 </div>
